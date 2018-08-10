@@ -1,0 +1,8 @@
+/Fecha_Hora/nbproject/private/
+/Fecha_Hora/build/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
