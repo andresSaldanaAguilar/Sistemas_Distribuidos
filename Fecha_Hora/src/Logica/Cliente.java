@@ -32,9 +32,9 @@ public class Cliente {
         BufferedReader br = new BufferedReader(new InputStreamReader( s.getInputStream() ) );
         System.out.println( "Hora actual en localhost:" );
         System.out.println( "\t"+br.readLine() );
-
         br.close();
-        s.close();     
+        s.close(); 
+        
     } catch( UnknownHostException e ) {
         System.out.println( e );
     } catch( IOException e ) {
