@@ -7,3 +7,4 @@ dist/
 nbdist/
 .nb-gradle/
 /ServidorCliente/nbproject/private/
+/Sockets_Procedures/nbproject/private/
