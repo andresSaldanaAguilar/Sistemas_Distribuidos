@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 29, 2018 5:52:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelos.Examen" table="examen" catalog="Escuela" optimistic-lock="version">
+        <id name="idExamen" type="int">
+            <column name="idExamen" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="materias" class="Modelos.Materias" fetch="select">
+            <column name="idMaterias" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+        <set name="preguntases" table="preguntas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idExamen" />
+            </key>
+            <one-to-many class="Modelos.Preguntas" />
+        </set>
+        <set name="calificacioneses" table="calificaciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idExamen" />
+            </key>
+            <one-to-many class="Modelos.Calificaciones" />
+        </set>
+    </class>
+</hibernate-mapping>
