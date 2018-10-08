@@ -48,8 +48,8 @@ create table employees(
     FirstName varchar(10),
     Title varchar(30),
     TitleOfCourtesy varchar(25),
-    BirthDate date,
-    HireDate date,
+    BirthDate varchar(25),
+    HireDate varchar(25),
     Address varchar(60),
     City varchar(15),
     Region varchar(15),
@@ -57,7 +57,7 @@ create table employees(
     Country varchar(15),
     HomePhone varchar(24),
     PhoneExtension varchar(4),
-    Photo longblob, 
+    Photo varchar(40), 
     Notes varchar(40),
     ReportsTo varchar(40)
 );
@@ -209,16 +209,16 @@ end $
 #------------------------------------------------------------------
 
 
-create procedure spInsertEmployee(LastName varchar(20),FirstName varchar(10),Title varchar(30),TitleOfCourtesy varchar(25),BirthDate date,HireDate date,Address varchar(60),City varchar(15),Region varchar(15),PostalCode varchar(10),Country varchar(15),HomePhone varchar(24),PhoneExtension varchar(4),Photo longblob,Notes varchar(40),ReportsTo varchar(40))
+create procedure spInsertEmployee(Password varchar(20),Privilege varchar(1),LastName varchar(20),FirstName varchar(10),Title varchar(30),TitleOfCourtesy varchar(25),BirthDate varchar(25),HireDate varchar(25),Address varchar(60),City varchar(15),Region varchar(15),PostalCode varchar(10),Country varchar(15),HomePhone varchar(24),PhoneExtension varchar(4),Photo varchar(40),Notes varchar(40),ReportsTo varchar(40))
 begin
-	INSERT INTO employees(LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode,Country,HomePhone,PhoneExtension,Photo,Notes,ReportsTo)
-	VALUES(LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode,Country,HomePhone,PhoneExtension,Photo,Notes,ReportsTo);
+	INSERT INTO employees(Password,Privilege,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode,Country,HomePhone,PhoneExtension,Photo,Notes,ReportsTo)
+	               VALUES(Password,Privilege,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode,Country,HomePhone,PhoneExtension,Photo,Notes,ReportsTo);
 end $
 
-create procedure spUpdateEmployee(EmployeeID int,LastName varchar(20),FirstName varchar(10),Title varchar(30),TitleOfCourtesy varchar(25),BirthDate date,HireDate date,Address varchar(60),City varchar(15),Region varchar(15),PostalCode varchar(10),Country varchar(15),HomePhone varchar(24),PhoneExtension varchar(4),Photo longblob,Notes varchar(40),ReportsTo varchar(40))
+create procedure spUpdateEmployee(EmployeeID int,Password varchar(20),Privilege varchar(1),LastName varchar(20),FirstName varchar(10),Title varchar(30),TitleOfCourtesy varchar(25),BirthDate varchar(25),HireDate varchar(25),Address varchar(60),City varchar(15),Region varchar(15),PostalCode varchar(10),Country varchar(15),HomePhone varchar(24),PhoneExtension varchar(4),Photo varchar(40),Notes varchar(40),ReportsTo varchar(40))
 begin
 	UPDATE employees
-	SET EmployeeID = EmployeeID,LastName = LastName,FirstName = FirstName,Title = Title,TitleOfCourtesy = TitleOfCourtesy,BirthDate = BirthDate,HireDate = HireDate,Address = Address,City = City,Region = Region,PostalCode = PostalCode,Country = Country,HomePhone = HomePhone,PhoneExtension = PhoneExtension,Photo = Photo,Notes = Notes,ReportsTo = ReportsTo WHERE EmployeeID = EmployeeID;
+	SET Password=Password,Privilege=Privilege,LastName = LastName,FirstName = FirstName,Title = Title,TitleOfCourtesy = TitleOfCourtesy,BirthDate = BirthDate,HireDate = HireDate,Address = Address,City = City,Region = Region,PostalCode = PostalCode,Country = Country,HomePhone = HomePhone,PhoneExtension = PhoneExtension,Photo = Photo,Notes = Notes,ReportsTo = ReportsTo WHERE EmployeeID = EmployeeID;
 end $
 
 create procedure spDeleteEmployee(EmployeeIDD int)
@@ -235,6 +235,12 @@ create procedure spSelectAllEmployee()
 begin
     select * from employees;
 end $
+
+create procedure spLogInEmployee(EmployeeIDD int,FirstNamee varchar(10),LastNamee varchar(20),Passwordd varchar(20))
+begin 
+    select * from employees where EmployeeID like EmployeeIDD and FirstName like FirstNamee and LastName like LastNamee and Password like Passwordd;
+end $
+
 
 
 #------------------------------------------------------------------

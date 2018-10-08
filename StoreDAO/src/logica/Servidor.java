@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -32,10 +33,11 @@ public class Servidor{
                 PrintStream ps = new PrintStream(clienteSocket.getOutputStream());
                 //resultado booleano de la transaccion
                 boolean respuesta = false;
-                
                 //resultado de set de registros
                 String registros = "";
-              
+                //pa formatear las fechas
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+                
                 String [] aux = mensajeDelCliente.readLine().split(";");
                 //consiguiendo la opcion
                 int opcion = Integer.parseInt(aux[0]);
@@ -124,8 +126,43 @@ public class Servidor{
                         System.out.println("Success: "+registros);
                         ps.println(registros);
                         ps.flush();
-                        break;                        
-                                        
+                        break;     
+                    case 13:                                                
+                        System.out.println("Server: Insert employees");                    
+                        respuesta = EmployeesDAO.insert(aux[1],aux[2],aux[3],aux[4],aux[5],aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],aux[13],aux[14],aux[15],aux[16],aux[17],Integer.parseInt(aux[18]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 14:
+                        System.out.println("Server: Delete employees");
+                        respuesta = EmployeesDAO.delete(Integer.parseInt(aux[1]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 15:
+                        System.out.println("Server: Update employees");
+                        System.out.println(aux[1]+" "+aux[2]+" "+aux[3]+" "+aux[4]+" "+aux[5]+" "+aux[6]+" "+aux[7]+" "+aux[8]+" "+aux[9]+" "+aux[10]+" "+aux[11]+" "+aux[12]+" "+aux[13]+" "+aux[14]+" "+aux[15]+" "+aux[16]+" "+aux[17]+" "+aux[18]+" "+aux[19]);
+                        respuesta = EmployeesDAO.update(Integer.parseInt(aux[1]),aux[2],aux[3],aux[4],aux[5],aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],aux[13],aux[14],aux[15],aux[16],aux[17],aux[18],Integer.parseInt(aux[19]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 16:
+                        System.out.println("Server: List employees");
+                        registros = EmployeesDAO.selectAll();
+                        System.out.println("Success: "+registros);
+                        ps.println(registros);
+                        ps.flush();
+                        break; 
+                    case 30:
+                        System.out.println("Loggin in...");
+                        String user [] = aux[1].split("_");
+                        respuesta = EmployeesDAO.log_in(Integer.parseInt(user[2]), user[0], user[1], aux[2]);
+                        System.out.println("Success log in: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
                     default:
                         break;
                 }//switch

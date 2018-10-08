@@ -203,6 +203,41 @@ public class Cliente {
         return set;
     }    
     
+    public boolean LogIn(String username, String contrasenia){
+        Boolean aux = false;
+        Socket socket = null;
+        try{
+            socket = new Socket(servidor, Servidor.PUERTO);
+            //salida de datos
+            PrintStream salida= new PrintStream(socket.getOutputStream());
+            //entrada de datos
+            BufferedReader br = new BufferedReader(new InputStreamReader( socket.getInputStream() ) );
+
+            System.out.println("Client: Delete");
+            String out = "30;"+username+";"+contrasenia;
+            salida.println(out);
+            salida.flush();
+            aux = Boolean.parseBoolean(br.readLine());
+            System.out.println( "Success: "+ aux );
+            salida.close();
+            br.close();    
+            
+        }catch(IOException e){
+        try {
+            socket.close();
+        }catch (IOException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        e.printStackTrace();
+        }
+        try {
+            socket.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return aux;
+    }
+    
     
     public static void main(String[] args) {
         Cliente c = new Cliente();

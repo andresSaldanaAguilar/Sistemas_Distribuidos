@@ -16,17 +16,21 @@ public class Principal extends javax.swing.JFrame {
     PanelCategories pc;
     PanelCustomers pcmr;
     PanelSuppliers ps;
+    PanelEmployees pe;
+    Cliente c;
 
-    public Principal() 
+    public Principal(Cliente c) 
     {
         initComponents();
-        Cliente c = new Cliente();
+        this.c = c;
         pc = new PanelCategories(c);
         pcmr = new PanelCustomers(c);
         ps = new PanelSuppliers(c);
+        pe = new PanelEmployees(c);
         Panel.add(pc);
         Panel.add(pcmr);
         Panel.add(ps);
+        Panel.add(pe);
     }
 
 
@@ -42,6 +46,7 @@ public class Principal extends javax.swing.JFrame {
         Basicas = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -87,6 +92,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("Employees");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
 
         jMenu3.setText("Reportes");
 
@@ -156,6 +169,10 @@ public class Principal extends javax.swing.JFrame {
         ps.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        pe.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     
     public static void main(String args[]) 
     {
@@ -200,7 +217,7 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                //new Principal().setVisible(true);
             }
         });
     }
@@ -217,5 +234,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }
