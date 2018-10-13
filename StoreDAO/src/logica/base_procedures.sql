@@ -64,9 +64,9 @@ create table employees(
 
 create table orders(
     OrderID int primary key not null auto_increment,
-    OrderDate datetime,
-    RequiredDate datetime,
-    ShippedDate datetime,
+    OrderDate varchar(25),
+    RequiredDate varchar(25),
+    ShippedDate varchar(25),
     ShipVia int,
     Freight decimal,
     ShipName varchar(40),
@@ -76,7 +76,7 @@ create table orders(
     ShipPostalCode varchar(10),
     ShipCountry varchar(15),
     EmployeeID int,
-    CustomerID varchar(5),
+    CustomerID varchar(10),
         FOREIGN KEY (EmployeeID)
         REFERENCES employees(EmployeeID)
         ON DELETE CASCADE,
@@ -236,25 +236,26 @@ begin
     select * from employees;
 end $
 
-create procedure spLogInEmployee(EmployeeIDD int,FirstNamee varchar(10),LastNamee varchar(20),Passwordd varchar(20))
+create procedure spLogInEmployee(BirthDatee varchar(25),FirstNamee varchar(10),LastNamee varchar(20),Passwordd varchar(20))
 begin 
-    select * from employees where EmployeeID like EmployeeIDD and FirstName like FirstNamee and LastName like LastNamee and Password like Passwordd;
+    select * from employees where BirthDate like BirthDatee and FirstName like FirstNamee and LastName like LastNamee and Password like Passwordd;
 end $
 
 
 
 #------------------------------------------------------------------
 
-create procedure spInsertOrder(OrderDate datetime,RequiredDate datetime,ShippedDate datetime,ShipVia int,Freight decimal,ShipName varchar(40),ShipAddress varchar(60),ShipCity varchar(15),ShipRegion varchar(15),ShipPostalCode varchar(10),ShipCountry varchar(15),EmployeeID int,CustomerID varchar(5))
+create procedure spInsertOrder(OrderDate varchar(25),RequiredDate varchar(25),ShippedDate varchar(25),ShipVia int,Freight decimal,ShipName varchar(40),ShipAddress varchar(60),ShipCity varchar(15),ShipRegion varchar(15),ShipPostalCode varchar(10),ShipCountry varchar(15),EmployeeID int,CustomerID varchar(10))
 begin
 	INSERT INTO orders (OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry,EmployeeID,CustomerID)
 	VALUES(OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry,EmployeeID,CustomerID);
 
 end $
 
-create procedure spUpdateOrder(OrderID int,OrderDate datetime,RequiredDate datetime,ShippedDate datetime,ShipVia int,Freight decimal,ShipName varchar(40),ShipAddress varchar(60),ShipCity varchar(15),ShipRegion varchar(15),ShipPostalCode varchar(10),ShipCountry varchar(15),EmployeeID int,CustomerID varchar(5))
+create procedure spUpdateOrder(OrderID int,OrderDate varchar(25),RequiredDate varchar(25),ShippedDate varchar(25),ShipVia int,Freight decimal,ShipName varchar(40),ShipAddress varchar(60),ShipCity varchar(15),ShipRegion varchar(15),ShipPostalCode varchar(10),ShipCountry varchar(15),EmployeeID int,CustomerID varchar(10))
 begin
-	UPDATE orders SET OrderID = OrderID, OrderDate = OrderDate, RequiredDate = RequiredDate, ShippedDate = ShippedDate, ShipVia = ShipVia, Freight = Freight, ShipName = ShipName, ShipAddress = ShipAddress, ShipCity = ShipCity, ShipRegion = ShipRegion, ShipPostalCode = ShipPostalCode, ShipCountry = ShipCountry, EmployeeID = EmployeeID, CustomerID = CustomerID WHERE OrderID = OrderID;
+	UPDATE orders 
+        SET OrderDate = OrderDate, RequiredDate = RequiredDate, ShippedDate = ShippedDate, ShipVia = ShipVia, Freight = Freight, ShipName = ShipName, ShipAddress = ShipAddress, ShipCity = ShipCity, ShipRegion = ShipRegion, ShipPostalCode = ShipPostalCode, ShipCountry = ShipCountry, EmployeeID = EmployeeID, CustomerID = CustomerID WHERE OrderID = OrderID;
 end $
 
 create procedure spDeleteOrder(OrderIDD int)

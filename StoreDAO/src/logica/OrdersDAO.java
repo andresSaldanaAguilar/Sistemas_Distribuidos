@@ -53,7 +53,7 @@ public class OrdersDAO{
         return respuesta;
     }
     
-    public static synchronized boolean insert(Date OrderDate, Date RequiredDate, Date ShippedDate, int ShipVia, double Freight, String Name, String Address, String City, String Region, String PostalCode, String Country, int EmployeeID, int CustomerID){
+    public static synchronized boolean insert(String OrderDate, String RequiredDate, String ShippedDate, int ShipVia, double Freight, String Name, String Address, String City, String Region, String PostalCode, String Country, int EmployeeID, String CustomerID){
         //creamos un atributo que manejara la conexion a base de datos
         Connection cn = null;
         //atributo encargado de llamar el procedure
@@ -69,9 +69,9 @@ public class OrdersDAO{
             //construimos una llamada al procedure
             cs = cn.prepareCall("{call spInsertOrder(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             //estalecemos el primer argumento del procedure
-            cs.setDate(1, (java.sql.Date) OrderDate);
-            cs.setDate(2, (java.sql.Date) RequiredDate);
-            cs.setDate(3, (java.sql.Date) ShippedDate);
+            cs.setString(1, OrderDate);
+            cs.setString(2, RequiredDate);
+            cs.setString(3, ShippedDate);
             cs.setInt(4, ShipVia);
             cs.setDouble(5, Freight);
             cs.setString(6, Name);
@@ -81,7 +81,7 @@ public class OrdersDAO{
             cs.setString(10, PostalCode);
             cs.setString(11, Country);
             cs.setInt(12, EmployeeID);
-            cs.setInt(13, CustomerID);       
+            cs.setString(13, CustomerID);       
 
             //guardamos en una variable binaria el resultado de la transaccion
             respuesta = cs.executeUpdate() == 1;
@@ -110,7 +110,7 @@ public class OrdersDAO{
         return respuesta;
     } 
     
-    public static synchronized boolean update(int id, Date OrderDate, Date RequiredDate, Date ShippedDate, int ShipVia, double Freight, String Name, String Address, String City, String Region, String PostalCode, String Country, int EmployeeID, int CustomerID){
+    public static synchronized boolean update(int id, String OrderDate, String RequiredDate, String ShippedDate, int ShipVia, double Freight, String Name, String Address, String City, String Region, String PostalCode, String Country, int EmployeeID, String CustomerID){
         //creamos un atributo que manejara la conexion a base de datos
         Connection cn = null;
         //atributo encargado de llamar el procedure
@@ -124,12 +124,12 @@ public class OrdersDAO{
             //evitamos el guardado permanente al termino de la transaccion 
             cn.setAutoCommit(false);
             //construimos una llamada al procedure
-            cs = cn.prepareCall("{call spUpdateOrder(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            cs = cn.prepareCall("{call spUpdateOrder(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             //estalecemos el primer argumento del procedure
             cs.setInt(1, id);
-            cs.setDate(2, (java.sql.Date) OrderDate);
-            cs.setDate(3, (java.sql.Date) RequiredDate);
-            cs.setDate(4, (java.sql.Date) ShippedDate);
+            cs.setString(2, OrderDate);
+            cs.setString(3, RequiredDate);
+            cs.setString(4, ShippedDate);
             cs.setInt(5, ShipVia);
             cs.setDouble(6, Freight);
             cs.setString(7, Name);
@@ -139,7 +139,7 @@ public class OrdersDAO{
             cs.setString(11, PostalCode);
             cs.setString(12, Country);
             cs.setInt(13, EmployeeID);
-            cs.setInt(14, CustomerID);   
+            cs.setString(14, CustomerID);   
             
             //guardamos en una variable binaria el resultado de la transaccion
             respuesta = cs.executeUpdate() == 1;
@@ -214,7 +214,7 @@ public class OrdersDAO{
             while (existenMasFilas) {
                 registro = "";
                 for (i = 1; i <= numeroColumnas; i++) {
-                    registro = registro.concat(rs.getString(i) + "  ");
+                    registro = registro.concat(rs.getString(i) + ";");
                 }
                 resultSet += registro+"_";
                 existenMasFilas = rs.next();
@@ -290,7 +290,7 @@ public class OrdersDAO{
             while (existenMasFilas) {
                 registro = "";
                 for (i = 1; i <= numeroColumnas; i++) {
-                    registro = registro.concat(rs.getString(i) + "  ");
+                    registro = registro.concat(rs.getString(i) + ";");
                 }
                 resultSet += registro+"_";
                 existenMasFilas = rs.next();
@@ -319,7 +319,11 @@ public class OrdersDAO{
             e.printStackTrace();
         }
         return resultSet;
-    }  
+    }
+    
+    public static void main(String[] args) {
+        OrdersDAO.update(3, "adal", "asdaf", "datee", 1, 2, "namee", "addresss", "cite", "ref", "afa", "af", 1, "ID");
+    }
     
 
 }

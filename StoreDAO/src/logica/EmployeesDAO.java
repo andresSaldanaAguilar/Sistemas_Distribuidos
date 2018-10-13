@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class EmployeesDAO{
 
-    public static synchronized boolean log_in(int id,String firstName,String lastName, String password){        
+    public static synchronized boolean log_in(String birthDate,String firstName,String lastName, String password){        
         //creamos un atributo que manejara la conexion a base de datos
         Connection cn = null;
         //atributo encargado de llamar el procedure
@@ -35,7 +35,7 @@ public class EmployeesDAO{
             cn.setAutoCommit(false);
             cs = cn.prepareCall("{call spLogInEmployee(?,?,?,?)}");
             //estalecemos el primer argumento del procedure
-            cs.setInt(1, id);
+            cs.setString(1, birthDate);
             cs.setString(2, firstName);
             cs.setString(3, lastName);
             cs.setString(4, password);
@@ -304,9 +304,9 @@ public class EmployeesDAO{
             while (existenMasFilas) {
                 registro = "";
                 for (i = 1; i <= numeroColumnas; i++) {
-                    if(i != 1){
+                    
                         registro = registro.concat(rs.getString(i) + ";");   
-                    }
+                   
                 }
                 resultSet += registro+"_";
                 existenMasFilas = rs.next();
@@ -382,9 +382,9 @@ public class EmployeesDAO{
             while (existenMasFilas) {
                 registro = "";
                 for (i = 1; i <= numeroColumnas; i++) {
-                    if(i != 1){
+                 
                         registro = registro.concat(rs.getString(i) + ";");   
-                    }
+                  
                 }
                 resultSet += registro+"_";
                 existenMasFilas = rs.next();
@@ -416,7 +416,7 @@ public class EmployeesDAO{
     }  
     
     public static void main(String[] args) {
-        System.out.println(EmployeesDAO.log_in(1, "andres", "saldana", "1234"));
+        System.out.println(EmployeesDAO.selectAll());
         
     }
     

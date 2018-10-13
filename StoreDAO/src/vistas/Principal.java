@@ -17,6 +17,7 @@ public class Principal extends javax.swing.JFrame {
     PanelCustomers pcmr;
     PanelSuppliers ps;
     PanelEmployees pe;
+    PanelOrders po;
     Cliente c;
 
     public Principal(Cliente c) 
@@ -27,10 +28,12 @@ public class Principal extends javax.swing.JFrame {
         pcmr = new PanelCustomers(c);
         ps = new PanelSuppliers(c);
         pe = new PanelEmployees(c);
+        po = new PanelOrders(c);
         Panel.add(pc);
         Panel.add(pcmr);
         Panel.add(ps);
         Panel.add(pe);
+        Panel.add(po);
     }
 
 
@@ -47,7 +50,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -101,23 +103,19 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem6);
 
-        jMenu3.setText("Reportes");
-
-        jMenuItem3.setText("Alumnos x Carrera");
+        jMenuItem3.setText("Orders");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
-
-        jMenu2.add(jMenu3);
+        jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("About");
 
-        jMenuItem4.setText("Informacion");
+        jMenuItem4.setText("Info");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -151,18 +149,8 @@ public class Principal extends javax.swing.JFrame {
         pcmr.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-//        try {
-//            acciones.generaReporte();
-//        } catch (RemoteException ex) {
-//            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        JOptionPane.showMessageDialog(null, "En esta aplicacion puedes consultar\n"
-                                          + "la informacion de las escuelas, carreras\n"
-                                          + "y alumnos que asisten a ellas.");
+        JOptionPane.showMessageDialog(null, "ESCOM 2018 All Rights Reserved.");
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -172,6 +160,10 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         pe.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        po.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     
     public static void main(String args[]) 
@@ -226,7 +218,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Basicas;
     private javax.swing.JDesktopPane Panel;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
