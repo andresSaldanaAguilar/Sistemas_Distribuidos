@@ -143,7 +143,6 @@ public class Servidor{
                         break;
                     case 15:
                         System.out.println("Server: Update employees");
-                        System.out.println(aux[1]+" "+aux[2]+" "+aux[3]+" "+aux[4]+" "+aux[5]+" "+aux[6]+" "+aux[7]+" "+aux[8]+" "+aux[9]+" "+aux[10]+" "+aux[11]+" "+aux[12]+" "+aux[13]+" "+aux[14]+" "+aux[15]+" "+aux[16]+" "+aux[17]+" "+aux[18]+" "+aux[19]);
                         respuesta = EmployeesDAO.update(Integer.parseInt(aux[1]),aux[2],aux[3],aux[4],aux[5],aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],aux[13],aux[14],aux[15],aux[16],aux[17],aux[18],Integer.parseInt(aux[19]));
                         System.out.println("Success: "+respuesta);
                         ps.println(respuesta);
@@ -158,7 +157,6 @@ public class Servidor{
                         break; 
                     case 17:
                         System.out.println("Server: Insert orders");              
-                        System.out.println(aux[1]+aux[2]+aux[3]+Integer.parseInt(aux[4])+Double.parseDouble(aux[5])+aux[6]+aux[7]+aux[8]+aux[9]+aux[10]+aux[11]+Integer.parseInt(aux[12])+aux[13]);
                         respuesta = OrdersDAO.insert(aux[1],aux[2],aux[3],Integer.parseInt(aux[4]),Double.parseDouble(aux[5]),aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],Integer.parseInt(aux[12]),aux[13]);
                         System.out.println("Success: "+respuesta);
                         ps.println(respuesta);
@@ -173,7 +171,6 @@ public class Servidor{
                         break;
                     case 19:
                         System.out.println("Server: Update orders");
-                        System.out.println(Integer.parseInt(aux[1])+aux[2]+aux[3]+aux[4]+Integer.parseInt(aux[5])+Double.parseDouble(aux[6])+aux[7]+aux[8]+aux[9]+aux[10]+aux[11]+aux[12]+Integer.parseInt(aux[13])+aux[14]);
                         respuesta = OrdersDAO.update(Integer.parseInt(aux[1]),aux[2],aux[3],aux[4],Integer.parseInt(aux[5]),Double.parseDouble(aux[6]),aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],Integer.parseInt(aux[13]),aux[14]);
                         System.out.println("Success: "+respuesta);
                         ps.println(respuesta);
@@ -186,6 +183,62 @@ public class Servidor{
                         ps.println(registros);
                         ps.flush();
                         break; 
+                    case 21:
+                        System.out.println("Server: Insert products");              
+                        respuesta = ProductsDAO.insert(aux[1],aux[2],Double.parseDouble(aux[3]),Integer.parseInt(aux[4]),Integer.parseInt(aux[5]),Integer.parseInt(aux[6]),Integer.parseInt(aux[7]),Integer.parseInt(aux[8]),Integer.parseInt(aux[9]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 22:
+                        System.out.println("Server: Delete products");
+                        respuesta = ProductsDAO.delete(Integer.parseInt(aux[1]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 23:
+                        System.out.println("Server: Update products");
+                        respuesta = ProductsDAO.update(Integer.parseInt(aux[1]),aux[2],aux[3],Double.parseDouble(aux[4]),Integer.parseInt(aux[5]),Integer.parseInt(aux[6]),Integer.parseInt(aux[7]),Integer.parseInt(aux[8]),Integer.parseInt(aux[9]),Integer.parseInt(aux[10]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 24:
+                        System.out.println("Server: List products");
+                        registros = ProductsDAO.selectAll();
+                        System.out.println("Success: "+registros);
+                        ps.println(registros);
+                        ps.flush();
+                        break;
+                    case 25:
+                        System.out.println("Server: Insert order details");              
+                        respuesta = OrderDetailsDAO.insert(Double.parseDouble(aux[1]),Integer.parseInt(aux[2]),Double.parseDouble(aux[3]),Integer.parseInt(aux[4]),Integer.parseInt(aux[5]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 26:
+                        System.out.println("Server: Delete order details");
+                        respuesta = OrderDetailsDAO.delete(Integer.parseInt(aux[1]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 27:
+                        System.out.println("Server: Update order details");
+                        respuesta = OrderDetailsDAO.update(Integer.parseInt(aux[1]),Double.parseDouble(aux[2]),Integer.parseInt(aux[3]),Double.parseDouble(aux[4]),Integer.parseInt(aux[5]),Integer.parseInt(aux[6]));
+                        System.out.println("Success: "+respuesta);
+                        ps.println(respuesta);
+                        ps.flush();
+                        break;
+                    case 28:
+                        System.out.println("Server: List order details");
+                        registros = OrderDetailsDAO.selectAll();
+                        System.out.println("Success: "+registros);
+                        ps.println(registros);
+                        ps.flush();
+                        break;
                     case 30:
                         System.out.println("Loggin in...");
                         String user [] = aux[1].split("_");

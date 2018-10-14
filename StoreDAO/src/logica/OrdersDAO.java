@@ -321,9 +321,7 @@ public class OrdersDAO{
         return resultSet;
     }
     
-    public static void main(String[] args) {
-        OrdersDAO.update(3, "adal", "asdaf", "datee", 1, 2, "namee", "addresss", "cite", "ref", "afa", "af", 1, "ID");
-    }
+   
     
 
 }

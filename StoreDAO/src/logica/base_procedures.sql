@@ -252,10 +252,10 @@ begin
 
 end $
 
-create procedure spUpdateOrder(OrderID int,OrderDate varchar(25),RequiredDate varchar(25),ShippedDate varchar(25),ShipVia int,Freight decimal,ShipName varchar(40),ShipAddress varchar(60),ShipCity varchar(15),ShipRegion varchar(15),ShipPostalCode varchar(10),ShipCountry varchar(15),EmployeeID int,CustomerID varchar(10))
+create procedure spUpdateOrder(OrderIDD int,OrderDate varchar(25),RequiredDate varchar(25),ShippedDate varchar(25),ShipVia int,Freight decimal,ShipName varchar(40),ShipAddress varchar(60),ShipCity varchar(15),ShipRegion varchar(15),ShipPostalCode varchar(10),ShipCountry varchar(15),EmployeeID int,CustomerID varchar(10))
 begin
 	UPDATE orders 
-        SET OrderDate = OrderDate, RequiredDate = RequiredDate, ShippedDate = ShippedDate, ShipVia = ShipVia, Freight = Freight, ShipName = ShipName, ShipAddress = ShipAddress, ShipCity = ShipCity, ShipRegion = ShipRegion, ShipPostalCode = ShipPostalCode, ShipCountry = ShipCountry, EmployeeID = EmployeeID, CustomerID = CustomerID WHERE OrderID = OrderID;
+        SET OrderDate = OrderDate, RequiredDate = RequiredDate, ShippedDate = ShippedDate, ShipVia = ShipVia, Freight = Freight, ShipName = ShipName, ShipAddress = ShipAddress, ShipCity = ShipCity, ShipRegion = ShipRegion, ShipPostalCode = ShipPostalCode, ShipCountry = ShipCountry, EmployeeID = EmployeeID, CustomerID = CustomerID WHERE OrderID = OrderIDD;
 end $
 
 create procedure spDeleteOrder(OrderIDD int)
@@ -331,3 +331,13 @@ begin
 end $
 
 delimiter ;
+
+call spInsertCustomer('myid','companyname','contactname','title','address','city','region','cp','country','phone','fax');
+call spInsertSupplier('companyname','contactname','contacttitle','address','city','region','cp','country','phone','fax','homepage');
+call spInsertCategory('name','desc','picture');
+call spInsertEmployee('Password','1','LastName','FirstNa','Title','TitleOfC','BirthDate','HireDate','Address','City','Region','PostalCo','Country','HomePhone','Phon','Photo','Notes','ReportsTo');
+insert into Customers(CustomerID,CompanyName, ContactName, Address, City, Region, PostalCode, Country, Phone, Fax) values('ID','Company', 'Contact', 'Address', 'City', 'Region', 'Postal', 'Country', 'Phone', 'Fax');
+call spInsertEmployee('qwq','q','Saldana','Andres','qewqe','qewe','18-03-1997','18-03-1997','eqweq','qewq','eqeq','qweqwe','qeqe','qweqwe','qeqe','sadasd','asfaa',1);
+call spInsertOrder('12','13','14',1,1,'namee','addr','cete','region','cp','countre',1,'ID');  
+call spInsertProduct('name','quantity',3,1,2,3,4,1,1);
+

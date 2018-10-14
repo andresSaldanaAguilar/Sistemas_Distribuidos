@@ -18,6 +18,8 @@ public class Principal extends javax.swing.JFrame {
     PanelSuppliers ps;
     PanelEmployees pe;
     PanelOrders po;
+    PanelProducts pp;
+    PanelOrderDatails pod;
     Cliente c;
 
     public Principal(Cliente c) 
@@ -29,11 +31,15 @@ public class Principal extends javax.swing.JFrame {
         ps = new PanelSuppliers(c);
         pe = new PanelEmployees(c);
         po = new PanelOrders(c);
+        pp = new PanelProducts(c);
+        pod = new PanelOrderDatails(c);
         Panel.add(pc);
         Panel.add(pcmr);
         Panel.add(ps);
         Panel.add(pe);
         Panel.add(po);
+        Panel.add(pp);
+        Panel.add(pod);
     }
 
 
@@ -51,6 +57,8 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
 
@@ -111,6 +119,22 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem3);
 
+        jMenuItem7.setText("Products");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem8.setText("Order Details");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
+
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("About");
@@ -164,6 +188,14 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         po.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        pp.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        pod.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     
     public static void main(String args[]) 
@@ -226,5 +258,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }

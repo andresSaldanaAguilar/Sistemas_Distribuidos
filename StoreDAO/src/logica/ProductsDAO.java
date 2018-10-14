@@ -204,7 +204,7 @@ public class ProductsDAO{
             while (existenMasFilas) {
                 registro = "";
                 for (i = 1; i <= numeroColumnas; i++) {
-                    registro = registro.concat(rs.getString(i) + "  ");
+                    registro = registro.concat(rs.getString(i) + ";");
                 }
                 resultSet += registro+"_";
                 existenMasFilas = rs.next();
@@ -280,7 +280,7 @@ public class ProductsDAO{
             while (existenMasFilas) {
                 registro = "";
                 for (i = 1; i <= numeroColumnas; i++) {
-                    registro = registro.concat(rs.getString(i) + "  ");
+                    registro = registro.concat(rs.getString(i) + ";");
                 }
                 resultSet += registro+"_";
                 existenMasFilas = rs.next();
@@ -309,7 +309,11 @@ public class ProductsDAO{
             e.printStackTrace();
         }
         return resultSet;
-    }  
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(ProductsDAO.selectAll());
+    }
     
 
 }

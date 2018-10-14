@@ -274,7 +274,7 @@ public class OrderDetailsDAO{
             while (existenMasFilas) {
                 registro = "";
                 for (i = 1; i <= numeroColumnas; i++) {
-                    registro = registro.concat(rs.getString(i) + "  ");
+                    registro = registro.concat(rs.getString(i) + ";");
                 }
                 resultSet += registro+"_";
                 existenMasFilas = rs.next();
