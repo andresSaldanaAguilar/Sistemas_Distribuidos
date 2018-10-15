@@ -32,7 +32,7 @@ public class PanelOrders extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
     
-    public PanelOrders(Cliente c) {
+    public PanelOrders(Cliente c,String credential) {
         this.c = c;
         initComponents();
         //listas
@@ -49,16 +49,62 @@ public class PanelOrders extends javax.swing.JInternalFrame {
             jComboBox3.addItem(aux[0]+"_"+aux[2]+" "+aux[1]);
         }
         
+        jTextField13.setEnabled(true);
         jTextField1.setEnabled(true);
-        jTextField3.setEnabled(true);
-        jTextField2.setEnabled(true);        
-        jTextField4.setEnabled(true);
-        jTextField5.setEnabled(true);
-        jTextField6.setEnabled(true);
-        jTextField7.setEnabled(true);
-        jTextField8.setEnabled(true);
+        jTextField3.setEnabled(true); 
+        jTextField2.setEnabled(true);   
+        jTextField4.setEnabled(true); 
 
-        jTextField13.setEnabled(false);
+        jTextField11.setEnabled(true);
+        jTextField10.setEnabled(true); 
+        jTextField14.setEnabled(true);  
+        jTextField6.setEnabled(true);
+        jTextField5.setEnabled(true);
+
+        jTextField7.setEnabled(true); 
+        jTextField8.setEnabled(true); 
+
+        jTextField13.setEnabled(false); 
+        
+        if(credential.equals("1")){
+            jTextField13.setVisible(false);
+            jTextField1.setVisible(false);
+            jTextField3.setVisible(false); 
+            jTextField2.setVisible(false);   
+            jTextField4.setVisible(false); 
+
+            jTextField11.setVisible(false);
+            jTextField10.setVisible(false); 
+            jTextField14.setVisible(false);  
+            jTextField6.setVisible(false);
+            jTextField5.setVisible(false);
+
+            jTextField7.setVisible(false); 
+            jTextField8.setVisible(false); 
+
+            jTextField13.setVisible(false); 
+            
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel16.setVisible(false);
+            jLabel17.setVisible(false);
+            jLabel15.setVisible(false);
+            jLabel11.setVisible(false);
+            jLabel9.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel12.setVisible(false);
+            jLabel13.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel14.setVisible(false);
+            jComboBox1.setVisible(false);
+            jComboBox2.setVisible(false);
+            jComboBox3.setVisible(false);
+            jButton1.setVisible(false);
+        }
+        
         modelo = (DefaultTableModel) jTable1.getModel();
         refresh();
     }
@@ -150,9 +196,9 @@ public class PanelOrders extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setText("OrderDate");
+        jLabel2.setText("OrderDate (dd-mm-yyyy)");
 
-        jLabel3.setText("RequiredDate");
+        jLabel3.setText("Required (dd-mm-yyyy)");
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,9 +228,9 @@ public class PanelOrders extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("Shipped Date");
+        jLabel6.setText("Shipped Date (dd-mm-yyyy)");
 
-        jLabel7.setText("ShippedVia");
+        jLabel7.setText("ShippedVia (Numerical)");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +296,7 @@ public class PanelOrders extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel16.setText("Freight");
+        jLabel16.setText("Freight (Numerical)");
 
         jLabel17.setText("ShipName");
 
@@ -327,7 +373,7 @@ public class PanelOrders extends javax.swing.JInternalFrame {
                                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                                         .addComponent(jButton1))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

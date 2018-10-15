@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class EmployeesDAO{
 
-    public static synchronized boolean log_in(String birthDate,String firstName,String lastName, String password){        
+    public static synchronized String log_in(String birthDate,String firstName,String lastName, String password){        
         //creamos un atributo que manejara la conexion a base de datos
         Connection cn = null;
         //atributo encargado de llamar el procedure
@@ -87,7 +87,7 @@ public class EmployeesDAO{
             e.printStackTrace();
         }
 
-        return !resultSet.equals("");
+        return resultSet.equals("") ? "false":resultSet;
     }    
     
     
@@ -416,7 +416,7 @@ public class EmployeesDAO{
     }  
     
     public static void main(String[] args) {
-        System.out.println(EmployeesDAO.selectAll());
+        System.out.println(EmployeesDAO.log_in("18-03-1997","andres", "saldana","qwq"));
         
     }
     

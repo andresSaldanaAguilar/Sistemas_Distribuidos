@@ -238,7 +238,7 @@ end $
 
 create procedure spLogInEmployee(BirthDatee varchar(25),FirstNamee varchar(10),LastNamee varchar(20),Passwordd varchar(20))
 begin 
-    select * from employees where BirthDate like BirthDatee and FirstName like FirstNamee and LastName like LastNamee and Password like Passwordd;
+    select Privilege from employees where BirthDate like BirthDatee and FirstName like FirstNamee and LastName like LastNamee and Password like Passwordd;
 end $
 
 
@@ -332,12 +332,13 @@ end $
 
 delimiter ;
 
-call spInsertCustomer('myid','companyname','contactname','title','address','city','region','cp','country','phone','fax');
-call spInsertSupplier('companyname','contactname','contacttitle','address','city','region','cp','country','phone','fax','homepage');
-call spInsertCategory('name','desc','picture');
-call spInsertEmployee('Password','1','LastName','FirstNa','Title','TitleOfC','BirthDate','HireDate','Address','City','Region','PostalCo','Country','HomePhone','Phon','Photo','Notes','ReportsTo');
-insert into Customers(CustomerID,CompanyName, ContactName, Address, City, Region, PostalCode, Country, Phone, Fax) values('ID','Company', 'Contact', 'Address', 'City', 'Region', 'Postal', 'Country', 'Phone', 'Fax');
-call spInsertEmployee('qwq','q','Saldana','Andres','qewqe','qewe','18-03-1997','18-03-1997','eqweq','qewq','eqeq','qweqwe','qeqe','qweqwe','qeqe','sadasd','asfaa',1);
-call spInsertOrder('12','13','14',1,1,'namee','addr','cete','region','cp','countre',1,'ID');  
-call spInsertProduct('name','quantity',3,1,2,3,4,1,1);
+call spInsertCustomer('custm1','Microsoft','Stephani','Recruiter','Linden Circle San Franciso','California','East Coast','1803','USA','520980800976','No fax');
+call spInsertSupplier('CardBoard Inc.','Aaron','Prime Dealer','Sepulveda Pkwy Los Angeles','California','East Coast','1805','USA','521291011801','No fax','www.itscardboard.com');
+call spInsertCategory('Hardware','This are the products  for computers that are tangible','fish.png');
+call spInsertEmployee('00011011','0','Last1','First1','Engineer','Sistems Engineer','18-03-1997','12-09-2018','Aviation Av Los Angeles','California','East Coast','1803','USA','520987164265','432','cat.png','Newbie','Danny Mercado');
+call spInsertEmployee('00011011','1','Last2','First2','Engineer','Sistems Engineer','18-03-1997','12-09-2018','Aviation Av Los Angeles','California','East Coast','1803','USA','520987164265','432','cat.png','Newbie','Danny Mercado');
+call spInsertOrder('10-09-2018','20-09-2018','11-09-2018',1,1,'Andrew','Huntington Beach Los Angeles','California','East Coast','1802','USA',1,'custm1');  
+call spInsertProduct('SSD 250GB External','1',100,200,75,3,4,1,1);
+call spInsertOrderDetails(100,74,0.34,1,1);
+
 

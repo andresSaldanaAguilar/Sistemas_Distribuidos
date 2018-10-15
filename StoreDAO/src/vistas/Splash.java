@@ -103,6 +103,7 @@ public class Splash extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -113,13 +114,12 @@ public class Splash extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addComponent(jLabel3)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
@@ -143,14 +143,15 @@ public class Splash extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(c.LogIn(jTextField1.getText(), jTextField2.getText())){
-            Principal p = new Principal(c);
+        String credential = c.LogIn(jTextField1.getText(), jTextField2.getText());
+        if(!credential.equals("false")){
+            Principal p = new Principal(c,credential);
             JOptionPane.showMessageDialog(null, "Successful login");
             p.setVisible(true);
             this.setVisible(false);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Invalid Password or Username");
+            JOptionPane.showMessageDialog(null, "Invalid Password or Username, try again.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

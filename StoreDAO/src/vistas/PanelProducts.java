@@ -32,7 +32,7 @@ public class PanelProducts extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
     
-    public PanelProducts(Cliente c) {
+    public PanelProducts(Cliente c,String credential) {
         this.c = c;
         initComponents();
         //listas
@@ -50,11 +50,48 @@ public class PanelProducts extends javax.swing.JInternalFrame {
         } 
         }
 
+        jTextField13.setEnabled(true);
         jTextField1.setEnabled(true);
-        jTextField3.setEnabled(true);
-        jTextField2.setEnabled(true);        
-        jTextField4.setEnabled(true);
-        jTextField13.setEnabled(false);
+        jTextField3.setEnabled(true); 
+        jTextField2.setEnabled(true);   
+        jTextField4.setEnabled(true); 
+
+        jTextField11.setEnabled(true);
+        jTextField10.setEnabled(true); 
+        jTextField14.setEnabled(true);  
+
+        jTextField13.setEnabled(false); 
+        
+        if(credential.equals("1")){
+            jTextField13.setVisible(false);
+            jTextField1.setVisible(false);
+            jTextField3.setVisible(false); 
+            jTextField2.setVisible(false);   
+            jTextField4.setVisible(false); 
+
+            jTextField11.setVisible(false);
+            jTextField10.setVisible(false); 
+            jTextField14.setVisible(false);  
+
+            jTextField13.setVisible(false); 
+            
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel16.setVisible(false);
+            jLabel17.setVisible(false);
+            jLabel15.setVisible(false);
+            jLabel12.setVisible(false);
+            jLabel13.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel14.setVisible(false);
+            jComboBox1.setVisible(false);
+            jComboBox2.setVisible(false);
+            jComboBox3.setVisible(false);
+            jButton1.setVisible(false);
+        }
+        
         modelo = (DefaultTableModel) jTable1.getModel();
         refresh();
     }
@@ -170,9 +207,9 @@ public class PanelProducts extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("Unit Price");
+        jLabel6.setText("Unit Price (Numerical)");
 
-        jLabel7.setText("Units in Stock");
+        jLabel7.setText("Units in Stock (Numerical)");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,7 +235,7 @@ public class PanelProducts extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel15.setText("Discontinued");
+        jLabel15.setText("Discontinued (Numerical)");
 
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,9 +243,9 @@ public class PanelProducts extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel16.setText("Units on Order");
+        jLabel16.setText("Units on Order (Numerical)");
 
-        jLabel17.setText("Reorder Level");
+        jLabel17.setText("Reorder Level (Numerical)");
 
         jTextField14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +292,7 @@ public class PanelProducts extends javax.swing.JInternalFrame {
                             .addComponent(jLabel15)
                             .addComponent(jLabel16)
                             .addComponent(jLabel17)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(jTextField11)
                             .addComponent(jTextField10)
                             .addComponent(jTextField14))
                         .addGap(18, 18, 18)
@@ -279,7 +316,7 @@ public class PanelProducts extends javax.swing.JInternalFrame {
                                 .addGap(133, 133, 133)))
                         .addGap(193, 193, 193))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
                         .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(300, 300, 300)

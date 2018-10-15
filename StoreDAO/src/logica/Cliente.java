@@ -203,8 +203,8 @@ public class Cliente {
         return set;
     }    
     
-    public boolean LogIn(String username, String contrasenia){
-        Boolean aux = false;
+    public String LogIn(String username, String contrasenia){
+        String aux = "";
         Socket socket = null;
         try{
             socket = new Socket(servidor, Servidor.PUERTO);
@@ -217,7 +217,7 @@ public class Cliente {
             String out = "30;"+username+";"+contrasenia;
             salida.println(out);
             salida.flush();
-            aux = Boolean.parseBoolean(br.readLine());
+            aux = br.readLine();
             System.out.println( "Success: "+ aux );
             salida.close();
             br.close();    

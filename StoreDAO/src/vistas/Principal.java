@@ -22,17 +22,17 @@ public class Principal extends javax.swing.JFrame {
     PanelOrderDatails pod;
     Cliente c;
 
-    public Principal(Cliente c) 
+    public Principal(Cliente c,String credential) 
     {
         initComponents();
         this.c = c;
-        pc = new PanelCategories(c);
-        pcmr = new PanelCustomers(c);
-        ps = new PanelSuppliers(c);
-        pe = new PanelEmployees(c);
-        po = new PanelOrders(c);
-        pp = new PanelProducts(c);
-        pod = new PanelOrderDatails(c);
+        pc = new PanelCategories(c,credential);
+        pcmr = new PanelCustomers(c,credential);
+        ps = new PanelSuppliers(c,credential);
+        pe = new PanelEmployees(c,credential);
+        po = new PanelOrders(c,credential);
+        pp = new PanelProducts(c,credential);
+        pod = new PanelOrderDatails(c,credential);
         Panel.add(pc);
         Panel.add(pcmr);
         Panel.add(ps);
@@ -70,11 +70,11 @@ public class Principal extends javax.swing.JFrame {
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 791, Short.MAX_VALUE)
+            .addGap(0, 915, Short.MAX_VALUE)
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
+            .addGap(0, 668, Short.MAX_VALUE)
         );
 
         jMenu2.setText("Options");

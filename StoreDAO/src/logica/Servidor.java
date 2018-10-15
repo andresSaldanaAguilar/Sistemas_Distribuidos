@@ -242,9 +242,10 @@ public class Servidor{
                     case 30:
                         System.out.println("Loggin in...");
                         String user [] = aux[1].split("_");
-                        respuesta = EmployeesDAO.log_in(user[2], user[0], user[1], aux[2]);
+                        System.out.println(user[2]+" "+user[0]+" "+user[1]+""+aux[2]);
+                        registros = EmployeesDAO.log_in(user[2], user[0], user[1], aux[2]);
                         System.out.println("Success log in: "+respuesta);
-                        ps.println(respuesta);
+                        ps.println(registros.replace(";_", ""));
                         ps.flush();
                     default:
                         break;

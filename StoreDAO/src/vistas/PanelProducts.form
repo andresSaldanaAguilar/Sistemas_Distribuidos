@@ -91,7 +91,7 @@
                               <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField11" alignment="0" pref="147" max="32767" attributes="0"/>
+                              <Component id="jTextField11" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTextField10" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTextField14" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -123,7 +123,7 @@
                           <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" pref="681" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -297,12 +297,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Unit Price"/>
+            <Property name="text" type="java.lang.String" value="Unit Price (Numerical)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Units in Stock"/>
+            <Property name="text" type="java.lang.String" value="Units in Stock (Numerical)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField4">
@@ -337,7 +337,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Discontinued"/>
+            <Property name="text" type="java.lang.String" value="Discontinued (Numerical)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField11">
@@ -347,12 +347,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Units on Order"/>
+            <Property name="text" type="java.lang.String" value="Units on Order (Numerical)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reorder Level"/>
+            <Property name="text" type="java.lang.String" value="Reorder Level (Numerical)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField14">

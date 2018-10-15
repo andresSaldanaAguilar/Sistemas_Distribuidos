@@ -32,7 +32,7 @@ public class PanelOrderDatails extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
     
-    public PanelOrderDatails(Cliente c) {
+    public PanelOrderDatails(Cliente c,String credential) {
         this.c = c;
         initComponents();
         //listas
@@ -54,6 +54,25 @@ public class PanelOrderDatails extends javax.swing.JInternalFrame {
         jTextField3.setEnabled(true);
         jTextField2.setEnabled(true);        
         jTextField13.setEnabled(false);
+        
+        if(credential.equals("1")){
+            jTextField1.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField2.setVisible(false);        
+            jTextField13.setVisible(false);
+            jComboBox1.setVisible(false);
+            jComboBox2.setVisible(false);
+            jComboBox3.setVisible(false);
+            jButton1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel12.setVisible(false);
+            jLabel13.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel14.setVisible(false);
+        }
+        
         modelo = (DefaultTableModel) jTable1.getModel();
         refresh();
     }
@@ -129,9 +148,9 @@ public class PanelOrderDatails extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setText("UnityPrice");
+        jLabel2.setText("UnityPrice (Numerical)");
 
-        jLabel3.setText("Quantity");
+        jLabel3.setText("Quantity (Numerical)");
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,7 +180,7 @@ public class PanelOrderDatails extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("Discount");
+        jLabel6.setText("Discount (Numerical)");
 
         jLabel12.setText("OrderID");
 
@@ -199,7 +218,7 @@ public class PanelOrderDatails extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +302,7 @@ public class PanelOrderDatails extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
