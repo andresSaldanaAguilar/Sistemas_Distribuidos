@@ -10,23 +10,17 @@
 <message name="divideResponse">
 <part name="parameters" element="tns:divideResponse"/>
 </message>
-<message name="suma">
-<part name="parameters" element="tns:suma"/>
-</message>
-<message name="sumaResponse">
-<part name="parameters" element="tns:sumaResponse"/>
-</message>
 <message name="hello">
 <part name="parameters" element="tns:hello"/>
 </message>
 <message name="helloResponse">
 <part name="parameters" element="tns:helloResponse"/>
 </message>
-<message name="resta">
-<part name="parameters" element="tns:resta"/>
+<message name="suma">
+<part name="parameters" element="tns:suma"/>
 </message>
-<message name="restaResponse">
-<part name="parameters" element="tns:restaResponse"/>
+<message name="sumaResponse">
+<part name="parameters" element="tns:sumaResponse"/>
 </message>
 <message name="multiplica">
 <part name="parameters" element="tns:multiplica"/>
@@ -34,26 +28,92 @@
 <message name="multiplicaResponse">
 <part name="parameters" element="tns:multiplicaResponse"/>
 </message>
+<message name="resta">
+<part name="parameters" element="tns:resta"/>
+</message>
+<message name="restaResponse">
+<part name="parameters" element="tns:restaResponse"/>
+</message>
+<message name="maximo">
+<part name="parameters" element="tns:maximo"/>
+</message>
+<message name="maximoResponse">
+<part name="parameters" element="tns:maximoResponse"/>
+</message>
+<message name="promedio">
+<part name="parameters" element="tns:promedio"/>
+</message>
+<message name="promedioResponse">
+<part name="parameters" element="tns:promedioResponse"/>
+</message>
+<message name="paridad">
+<part name="parameters" element="tns:paridad"/>
+</message>
+<message name="paridadResponse">
+<part name="parameters" element="tns:paridadResponse"/>
+</message>
+<message name="fibonacci">
+<part name="parameters" element="tns:fibonacci"/>
+</message>
+<message name="fibonacciResponse">
+<part name="parameters" element="tns:fibonacciResponse"/>
+</message>
+<message name="cuadrado">
+<part name="parameters" element="tns:cuadrado"/>
+</message>
+<message name="cuadradoResponse">
+<part name="parameters" element="tns:cuadradoResponse"/>
+</message>
+<message name="raiz">
+<part name="parameters" element="tns:raiz"/>
+</message>
+<message name="raizResponse">
+<part name="parameters" element="tns:raizResponse"/>
+</message>
 <portType name="Operaciones">
 <operation name="divide">
 <input wsam:Action="http://ws.mx.ipn.com/Operaciones/divideRequest" message="tns:divide"/>
 <output wsam:Action="http://ws.mx.ipn.com/Operaciones/divideResponse" message="tns:divideResponse"/>
 </operation>
+<operation name="hello">
+<input wsam:Action="http://ws.mx.ipn.com/Operaciones/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://ws.mx.ipn.com/Operaciones/helloResponse" message="tns:helloResponse"/>
+</operation>
 <operation name="suma">
 <input wsam:Action="http://ws.mx.ipn.com/Operaciones/sumaRequest" message="tns:suma"/>
 <output wsam:Action="http://ws.mx.ipn.com/Operaciones/sumaResponse" message="tns:sumaResponse"/>
 </operation>
-<operation name="hello">
-<input wsam:Action="http://ws.mx.ipn.com/Operaciones/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://ws.mx.ipn.com/Operaciones/helloResponse" message="tns:helloResponse"/>
+<operation name="multiplica">
+<input wsam:Action="http://ws.mx.ipn.com/Operaciones/multiplicaRequest" message="tns:multiplica"/>
+<output wsam:Action="http://ws.mx.ipn.com/Operaciones/multiplicaResponse" message="tns:multiplicaResponse"/>
 </operation>
 <operation name="resta">
 <input wsam:Action="http://ws.mx.ipn.com/Operaciones/restaRequest" message="tns:resta"/>
 <output wsam:Action="http://ws.mx.ipn.com/Operaciones/restaResponse" message="tns:restaResponse"/>
 </operation>
-<operation name="multiplica">
-<input wsam:Action="http://ws.mx.ipn.com/Operaciones/multiplicaRequest" message="tns:multiplica"/>
-<output wsam:Action="http://ws.mx.ipn.com/Operaciones/multiplicaResponse" message="tns:multiplicaResponse"/>
+<operation name="maximo">
+<input wsam:Action="http://ws.mx.ipn.com/Operaciones/maximoRequest" message="tns:maximo"/>
+<output wsam:Action="http://ws.mx.ipn.com/Operaciones/maximoResponse" message="tns:maximoResponse"/>
+</operation>
+<operation name="promedio">
+<input wsam:Action="http://ws.mx.ipn.com/Operaciones/promedioRequest" message="tns:promedio"/>
+<output wsam:Action="http://ws.mx.ipn.com/Operaciones/promedioResponse" message="tns:promedioResponse"/>
+</operation>
+<operation name="paridad">
+<input wsam:Action="http://ws.mx.ipn.com/Operaciones/paridadRequest" message="tns:paridad"/>
+<output wsam:Action="http://ws.mx.ipn.com/Operaciones/paridadResponse" message="tns:paridadResponse"/>
+</operation>
+<operation name="fibonacci">
+<input wsam:Action="http://ws.mx.ipn.com/Operaciones/fibonacciRequest" message="tns:fibonacci"/>
+<output wsam:Action="http://ws.mx.ipn.com/Operaciones/fibonacciResponse" message="tns:fibonacciResponse"/>
+</operation>
+<operation name="cuadrado">
+<input wsam:Action="http://ws.mx.ipn.com/Operaciones/cuadradoRequest" message="tns:cuadrado"/>
+<output wsam:Action="http://ws.mx.ipn.com/Operaciones/cuadradoResponse" message="tns:cuadradoResponse"/>
+</operation>
+<operation name="raiz">
+<input wsam:Action="http://ws.mx.ipn.com/Operaciones/raizRequest" message="tns:raiz"/>
+<output wsam:Action="http://ws.mx.ipn.com/Operaciones/raizResponse" message="tns:raizResponse"/>
 </operation>
 </portType>
 <binding name="OperacionesPortBinding" type="tns:Operaciones">
@@ -67,6 +127,15 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="hello">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="suma">
 <soap:operation soapAction=""/>
 <input>
@@ -76,7 +145,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="hello">
+<operation name="multiplica">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -94,7 +163,52 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="multiplica">
+<operation name="maximo">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="promedio">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="paridad">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="fibonacci">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="cuadrado">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="raiz">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

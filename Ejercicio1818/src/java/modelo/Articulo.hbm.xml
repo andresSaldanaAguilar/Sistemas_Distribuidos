@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 18, 2018 4:22:44 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Articulo" table="Articulo" catalog="InventarioSimple" optimistic-lock="version">
+        <id name="claveArticulo" type="string">
+            <column name="claveArticulo" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50" not-null="true" />
+        </property>
+        <property name="precio" type="big_decimal">
+            <column name="precio" precision="12" not-null="true" />
+        </property>
+        <property name="existencias" type="int">
+            <column name="existencias" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

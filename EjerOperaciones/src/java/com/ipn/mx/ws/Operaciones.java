@@ -71,4 +71,84 @@ public class Operaciones {
         return numeroUno/numeroDos;
     }
     
+    /**
+     * Web service operation
+     * @param numeroUno
+     * @param numeroDos
+     */
+    @WebMethod(operationName = "maximo")
+    public double maximo(@WebParam(name = "numeroUno") double numeroUno, @WebParam(name = "numeroDos") double numeroDos) {
+        //TODO write your implementation code here:
+        return Math.max(numeroUno, numeroDos);
+    }    
+    
+    /**
+     * Web service operation
+     * @param numeroUno
+     * @param numeroDos
+     */
+    @WebMethod(operationName = "promedio")
+    public double promedio(@WebParam(name = "numeroUno") double numeroUno, @WebParam(name = "numeroDos") double numeroDos) {
+        //TODO write your implementation code here:
+        return (numeroUno*numeroDos)/2;
+    }
+    
+    /**
+     * Web service operation
+     * @param numeroUno
+     * @param numeroDos
+     */
+    @WebMethod(operationName = "paridad")
+    public String paridad(@WebParam(name = "numeroUno") double numeroUno) {
+        //TODO write your implementation code here:
+        return numeroUno%2 == 0 ? "Es par":"Es impar";
+    }
+    
+    /**
+     * Web service operation
+     * @param numeroUno
+     * @param numeroDos
+     */
+    @WebMethod(operationName = "fibonacci")
+    public String fibonacci(@WebParam(name = "numeroUno") double numeroUno) {
+        int x =0;
+        int y =0;
+        int solucion;
+        String fibo = "";
+        for(int i=1;i<numeroUno+1;i++){
+            if(i==1 || i==2){
+                fibo += "1, ";
+                x=1;
+                y=1;
+            }
+            else{
+                solucion=x+y;
+                fibo += solucion+" ,";
+                x=y;
+                y=solucion;
+             }
+        }
+        return fibo;
+    }    
+    
+    @WebMethod(operationName = "cuadrado")
+    public double cuadrado(@WebParam(name = "numeroUno") double numeroUno) {
+        //TODO write your implementation code here:
+        return Math.pow(numeroUno, 2);
+    }
+    
+    @WebMethod(operationName = "raiz")
+    public double raiz(@WebParam(name = "numeroUno") double numeroUno) {
+        //TODO write your implementation code here:
+        return Math.sqrt(numeroUno);
+    }   
+    
+    public static void main(String[] args) {
+        Operaciones o = new Operaciones();
+        System.out.println(o.fibonacci(5));
+    }
+    
+ 
+                    
+    
 }

@@ -1,16 +1,40 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.mx.ipn.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.mx.ipn.com/">
 
+<xs:element name="cuadrado" type="tns:cuadrado"/>
+
+<xs:element name="cuadradoResponse" type="tns:cuadradoResponse"/>
+
 <xs:element name="divide" type="tns:divide"/>
 
 <xs:element name="divideResponse" type="tns:divideResponse"/>
+
+<xs:element name="fibonacci" type="tns:fibonacci"/>
+
+<xs:element name="fibonacciResponse" type="tns:fibonacciResponse"/>
 
 <xs:element name="hello" type="tns:hello"/>
 
 <xs:element name="helloResponse" type="tns:helloResponse"/>
 
+<xs:element name="maximo" type="tns:maximo"/>
+
+<xs:element name="maximoResponse" type="tns:maximoResponse"/>
+
 <xs:element name="multiplica" type="tns:multiplica"/>
 
 <xs:element name="multiplicaResponse" type="tns:multiplicaResponse"/>
+
+<xs:element name="paridad" type="tns:paridad"/>
+
+<xs:element name="paridadResponse" type="tns:paridadResponse"/>
+
+<xs:element name="promedio" type="tns:promedio"/>
+
+<xs:element name="promedioResponse" type="tns:promedioResponse"/>
+
+<xs:element name="raiz" type="tns:raiz"/>
+
+<xs:element name="raizResponse" type="tns:raizResponse"/>
 
 <xs:element name="resta" type="tns:resta"/>
 
@@ -19,6 +43,31 @@
 <xs:element name="suma" type="tns:suma"/>
 
 <xs:element name="sumaResponse" type="tns:sumaResponse"/>
+
+<xs:complexType name="maximo">
+<xs:sequence>
+<xs:element name="numeroUno" type="xs:double"/>
+<xs:element name="numeroDos" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="maximoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="paridad">
+<xs:sequence>
+<xs:element name="numeroUno" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="paridadResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="divide">
 <xs:sequence>
@@ -71,6 +120,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="fibonacci">
+<xs:sequence>
+<xs:element name="numeroUno" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fibonacciResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="multiplica">
 <xs:sequence>
 <xs:element name="numeroUno" type="xs:int"/>
@@ -81,6 +142,43 @@
 <xs:complexType name="multiplicaResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="raiz">
+<xs:sequence>
+<xs:element name="numeroUno" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="raizResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="promedio">
+<xs:sequence>
+<xs:element name="numeroUno" type="xs:double"/>
+<xs:element name="numeroDos" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="promedioResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cuadrado">
+<xs:sequence>
+<xs:element name="numeroUno" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cuadradoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>
