@@ -1,9 +1,9 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ipn.mx.modelo;
+package com.ipn.mx.modelo.entidades;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -33,10 +33,8 @@ public class Roles implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+
     private Integer id;
-    @Column(name = "nombreRol")
     private String nombreRol;
 
     public Roles() {
