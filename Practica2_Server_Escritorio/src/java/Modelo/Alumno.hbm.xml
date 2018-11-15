@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-oct-2018 18:13:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Alumno" table="alumno" catalog="escuela" optimistic-lock="version">
+        <id name="matricula" type="long">
+            <column name="matricula" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="carrera" class="Modelo.Carrera" fetch="select">
+            <column name="idCarrera" />
+        </many-to-one>
+        <property name="nombreAlumno" type="string">
+            <column name="nombreAlumno" length="45" />
+        </property>
+        <property name="paternoAlumno" type="string">
+            <column name="paternoAlumno" length="45" />
+        </property>
+        <property name="maternoAlumno" type="string">
+            <column name="maternoAlumno" length="45" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="10" />
+        </property>
+        <property name="calle" type="string">
+            <column name="calle" length="45" />
+        </property>
+        <property name="colonia" type="string">
+            <column name="colonia" length="45" />
+        </property>
+        <property name="numero" type="java.lang.Integer">
+            <column name="numero" />
+        </property>
+        <property name="codigoPostal" type="java.lang.Long">
+            <column name="codigoPostal" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="1" />
+        </property>
+        <property name="email" type="string">
+            <column name="eMail" length="45" />
+        </property>
+        <set name="calificacioneses" table="calificaciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="matricula" />
+            </key>
+            <one-to-many class="Modelo.Calificaciones" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -47,7 +47,7 @@ public class GenericoDAO {
         return r;
     }
     
-    public Resultado borrar(Object entidad){
+    public Resultado eliminar(Object entidad){
         Resultado r = new Resultado();
         try{
             em.remove(entidad);

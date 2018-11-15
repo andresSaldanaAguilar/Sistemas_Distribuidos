@@ -53,7 +53,7 @@ public class Resultado<T> {
         this.mensaje = mensaje;
     }    
     
-    public <U extends Object> Resultado<U> convertitATipo(Class<U> clase){
+    public <U extends Object> Resultado<U> convertirATipo(Class<U> clase){
         Resultado<U> respuesta = new Resultado<>();
         respuesta.setCodigo(this.getCodigo());
         return respuesta;
