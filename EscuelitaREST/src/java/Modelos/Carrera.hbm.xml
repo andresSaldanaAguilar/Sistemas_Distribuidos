@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 29, 2018 6:10:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelos.Carrera" table="Carrera" catalog="DDSRMI" optimistic-lock="version">
+        <id name="idCarrera" type="java.lang.Integer">
+            <column name="idCarrera" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreCarrera" type="string">
+            <column name="nombreCarrera" length="50" />
+        </property>
+        <property name="descripcionCarrera" type="string">
+            <column name="descripcionCarrera" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>
