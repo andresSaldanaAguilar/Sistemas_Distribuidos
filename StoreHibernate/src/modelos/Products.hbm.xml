@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 2, 2018 9:45:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Products" table="products" catalog="Store" optimistic-lock="version">
+        <id name="productId" type="java.lang.Integer">
+            <column name="ProductID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categories" class="modelos.Categories" fetch="select">
+            <column name="CategoryID" />
+        </many-to-one>
+        <many-to-one name="suppliers" class="modelos.Suppliers" fetch="select">
+            <column name="SupplierID" />
+        </many-to-one>
+        <property name="productName" type="string">
+            <column name="ProductName" length="40" />
+        </property>
+        <property name="quantityPerUnity" type="string">
+            <column name="QuantityPerUnity" length="20" />
+        </property>
+        <property name="unitPrice" type="java.lang.Long">
+            <column name="UnitPrice" precision="10" scale="0" />
+        </property>
+        <property name="unitInStock" type="java.lang.Integer">
+            <column name="UnitInStock" />
+        </property>
+        <property name="unitsOnOrder" type="java.lang.Integer">
+            <column name="UnitsOnOrder" />
+        </property>
+        <property name="reorderLevel" type="java.lang.Integer">
+            <column name="ReorderLevel" />
+        </property>
+        <property name="discontinued" type="java.lang.Integer">
+            <column name="Discontinued" />
+        </property>
+        <set name="orderdetailses" table="orderdetails" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProductID" />
+            </key>
+            <one-to-many class="modelos.Orderdetails" />
+        </set>
+    </class>
+</hibernate-mapping>

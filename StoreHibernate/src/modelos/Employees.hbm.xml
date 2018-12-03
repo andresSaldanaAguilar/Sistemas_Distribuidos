@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 2, 2018 9:45:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelos.Employees" table="employees" catalog="Store" optimistic-lock="version">
+        <id name="employeeId" type="java.lang.Integer">
+            <column name="EmployeeID" />
+            <generator class="identity" />
+        </id>
+        <property name="password" type="string">
+            <column name="Password" length="20" />
+        </property>
+        <property name="privilege" type="string">
+            <column name="Privilege" length="1" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LastName" length="20" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="FirstName" length="10" />
+        </property>
+        <property name="title" type="string">
+            <column name="Title" length="30" />
+        </property>
+        <property name="titleOfCourtesy" type="string">
+            <column name="TitleOfCourtesy" length="25" />
+        </property>
+        <property name="birthDate" type="string">
+            <column name="BirthDate" length="25" />
+        </property>
+        <property name="hireDate" type="string">
+            <column name="HireDate" length="25" />
+        </property>
+        <property name="address" type="string">
+            <column name="Address" length="60" />
+        </property>
+        <property name="city" type="string">
+            <column name="City" length="15" />
+        </property>
+        <property name="region" type="string">
+            <column name="Region" length="15" />
+        </property>
+        <property name="postalCode" type="string">
+            <column name="PostalCode" length="10" />
+        </property>
+        <property name="country" type="string">
+            <column name="Country" length="15" />
+        </property>
+        <property name="homePhone" type="string">
+            <column name="HomePhone" length="24" />
+        </property>
+        <property name="phoneExtension" type="string">
+            <column name="PhoneExtension" length="4" />
+        </property>
+        <property name="photo" type="string">
+            <column name="Photo" length="40" />
+        </property>
+        <property name="notes" type="string">
+            <column name="Notes" length="40" />
+        </property>
+        <property name="reportsTo" type="string">
+            <column name="ReportsTo" length="40" />
+        </property>
+        <set name="orderses" table="orders" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EmployeeID" />
+            </key>
+            <one-to-many class="modelos.Orders" />
+        </set>
+    </class>
+</hibernate-mapping>
