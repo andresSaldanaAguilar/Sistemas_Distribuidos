@@ -1,310 +1,80 @@
 package logica;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
+import modelos.Orderdetails;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class OrderDetailsDAO{
 
-    public static synchronized boolean delete(int id){
-        //creamos un atributo que manejara la conexion a base de datos
-        Connection cn = null;
-        //atributo encargado de llamar el procedure
-        CallableStatement cs = null;
-        //respuesta guarda el resultado de la conexion a base de datos  
-        boolean respuesta = false;
-        
-        try{
-            //establece la conexion con la base de datos especificada
-            cn = Conexion.getConexion();
-            //evitamos el guardado permanente al termino de la transaccion 
-            cn.setAutoCommit(false);
-            //construimos una llamada al procedure
-            cs = cn.prepareCall("{call spDeleteOrderDetails(?)}");
-            //estalecemos el primer argumento del procedure
-            cs.setInt(1, id);
-            //guardamos en una variable binaria el resultado de la transaccion
-            respuesta = cs.executeUpdate() == 1;
-            //hace los cambios cometidos, permanentes
-            if(respuesta){
-                cn.commit();
-            }else{
-                //deshacemos los cambios hechos
-                Conexion.deshacerCambios(cn);
-            }
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(SQLException e){
-            //si hay algun error, deshacemos todo cambio hecho en base de datos
-            Conexion.deshacerCambios(cn);
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(Exception e){
-            //Impresion de error ajeno a base de datos
-            e.printStackTrace();
-        }
-        return respuesta;
+    
+    public static boolean insert(double UnitPrice,int Quantity,double Discount, int OrderID, int ProductID){
+        Session session;
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Orderdetails orderdetail = new Orderdetails(OrderID,ProductID,UnitPrice,Quantity,Discount);
+        session.save(orderdetail);
+        tx.commit();
+        session.close();
+        System.out.println("Exito al crear;");
+        return true;        
     }
     
-    public static synchronized boolean insert(double UnitPrice,int Quantity,double Discount, int OrderID, int ProductID){
-        //creamos un atributo que manejara la conexion a base de datos
-        Connection cn = null;
-        //atributo encargado de llamar el procedure
-        CallableStatement cs = null;
-        //respuesta guarda el resultado de la conexion a base de datos  
-        boolean respuesta = false;
-        
-        try{
-            //establece la conexion con la base de datos especificada
-            cn = Conexion.getConexion();
-            //evitamos el guardado permanente al termino de la transaccion 
-            cn.setAutoCommit(false);
-            //construimos una llamada al procedure
-            cs = cn.prepareCall("{call spInsertOrderDetails(?,?,?,?,?)}");
-            //estalecemos el primer argumento del procedure
-            cs.setDouble(1, UnitPrice);
-            cs.setInt(2, Quantity);
-            cs.setDouble(3, Discount);
-            cs.setInt(4, OrderID);
-            cs.setInt(5, ProductID);       
-
-            //guardamos en una variable binaria el resultado de la transaccion
-            respuesta = cs.executeUpdate() == 1;
-            //hace los cambios cometidos, permanentes
-            if(respuesta){
-                cn.commit();
-            }else{
-                //deshacemos los cambios hechos
-                Conexion.deshacerCambios(cn);
-            }
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(SQLException e){
-            //si hay algun error, deshacemos todo cambio hecho en base de datos
-            Conexion.deshacerCambios(cn);
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(Exception e){
-            //Impresion de error ajeno a base de datos
-            e.printStackTrace();
-        }
-        return respuesta;
-    } 
-    
-    public static synchronized boolean update(int id, double UnitPrice,int Quantity,double Discount, int OrderID, int ProductID){
-        //creamos un atributo que manejara la conexion a base de datos
-        Connection cn = null;
-        //atributo encargado de llamar el procedure
-        CallableStatement cs = null;
-        //respuesta guarda el resultado de la conexion a base de datos  
-        boolean respuesta = false;
-        
-        try{
-            //establece la conexion con la base de datos especificada
-            cn = Conexion.getConexion();
-            //evitamos el guardado permanente al termino de la transaccion 
-            cn.setAutoCommit(false);
-            //construimos una llamada al procedure
-            cs = cn.prepareCall("{call spUpdateOrderDetails(?,?,?,?,?,?)}");
-            //estalecemos el primer argumento del procedure
-            cs.setInt(1, id);
-            cs.setDouble(2, UnitPrice);
-            cs.setInt(3, Quantity);
-            cs.setDouble(4, Discount);
-            cs.setInt(5, OrderID);
-            cs.setInt(6, ProductID);   
-            
-            //guardamos en una variable binaria el resultado de la transaccion
-            respuesta = cs.executeUpdate() == 1;
-            //hace los cambios cometidos, permanentes
-            if(respuesta){
-                cn.commit();
-            }else{
-                //deshacemos los cambios hechos
-                Conexion.deshacerCambios(cn);
-            }
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(SQLException e){
-            //si hay algun error, deshacemos todo cambio hecho en base de datos
-            Conexion.deshacerCambios(cn);
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(Exception e){
-            //Impresion de error ajeno a base de datos
-            e.printStackTrace();
-        }
-        return respuesta;
+    public static boolean delete(int id){           
+        Session session;
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Orderdetails orderdetail = (Orderdetails) session.get(Orderdetails.class,id);
+        session.delete(orderdetail);
+        tx.commit();
+        session.close();
+        System.out.println("Exito al borrar;");
+        return true;        
     }
     
-    public static synchronized String consult(int id){
-        //creamos un atributo que manejara la conexion a base de datos
-        Connection cn = null;
-        //atributo encargado de llamar el procedure
-        CallableStatement cs = null;
-        //respuesta guarda el resultado de la conexion a base de datos  
-        boolean respuesta = false;
-        //set de resultados de la base
-        ResultSet rs = null;
-        //variable para loop de registros
-        boolean existenMasFilas;
-        //variable que guarda los metadatos
-        ResultSetMetaData resultadoMetaData;
-        //cadena con el resultado de la busqueda
-        String resultSet= "",registro;
-        //variables de apoyo para el recorrido de los registros
-        int numeroColumnas, i;
-        
-        try{
-            //establece la conexion con la base de datos especificada
-            cn = Conexion.getConexion();
-            //evitamos el guardado permanente al termino de la transaccion 
-            cn.setAutoCommit(false);
-            //construimos una llamada al procedure
-            cs = cn.prepareCall("{call spSelectOneOrderDetails(?)}");
-            //estalecemos el primer argumento del procedure
-            cs.setInt(1, id);
-            //ejecutamos el select
-            cs.execute();
-            //conseguimos los resultados
-            rs = cs.getResultSet();        
-            //recorremos los resultados
-            existenMasFilas = rs.next();
-            //ponemos un identificador para el final de la consulta
-            if (!existenMasFilas) {
-                resultSet+="================================";
-            }
-            //conseguimos los metadatos
-            resultadoMetaData = rs.getMetaData();
-            //contamos el numero de columnas de los registros
-            numeroColumnas = resultadoMetaData.getColumnCount();
-
-            //recorremos los registros por columnas
-            while (existenMasFilas) {
-                registro = "";
-                for (i = 1; i <= numeroColumnas; i++) {
-                    registro = registro.concat(rs.getString(i) + "  ");
-                }
-                resultSet += registro+"_";
-                existenMasFilas = rs.next();
-            }
-            rs.close();
-            //hace los cambios cometidos, permanentes
-            if(respuesta){
-                cn.commit();
-            }else{
-                //deshacemos los cambios hechos
-                Conexion.deshacerCambios(cn);
-            }
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(SQLException e){
-            //si hay algun error, deshacemos todo cambio hecho en base de datos
-            Conexion.deshacerCambios(cn);
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(Exception e){
-            //Impresion de error ajeno a base de datos
-            e.printStackTrace();
+    public static boolean update(int id, double UnitPrice,int Quantity,double Discount, int OrderID, int ProductID){
+        Session session;
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        Transaction tr = session.beginTransaction();
+        Orderdetails orderdetail = (Orderdetails) session.get(Orderdetails.class,id);
+        orderdetail.setOrders(OrderID);
+        orderdetail.setProducts(ProductID);
+        orderdetail.setUnitPrice(UnitPrice);
+        orderdetail.setQuantity(Quantity);
+        orderdetail.setDiscount(Discount);
+        session.update(orderdetail);
+        tr.commit();
+        session.close();
+        System.out.println("Exito al actualizar;");
+        return true;
+    }    
+    
+    public static String selectAll(){
+        Session session;
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Orderdetails.class);
+        ArrayList<Orderdetails> Articulo = (ArrayList<Orderdetails>) criteria.list();
+        String aux="";
+        Iterator itr = Articulo.iterator();
+        while (itr.hasNext()) {
+                Orderdetails orderdetail = (Orderdetails) itr.next();
+                aux+=orderdetail.toString()+"_";
         }
-        return resultSet;
-    }  
+        session.close();
+        System.out.println("Exito al listar;");
+        return  aux;
+    }
     
-    
-    public static synchronized String selectAll(){
-        //creamos un atributo que manejara la conexion a base de datos
-        Connection cn = null;
-        //atributo encargado de llamar el procedure
-        CallableStatement cs = null;
-        //respuesta guarda el resultado de la conexion a base de datos  
-        boolean respuesta = false;
-        //set de resultados de la base
-        ResultSet rs = null;
-        //variable para loop de registros
-        boolean existenMasFilas;
-        //variable que guarda los metadatos
-        ResultSetMetaData resultadoMetaData;
-        //cadena con el resultado de la busqueda
-        String resultSet= "",registro;
-        //variables de apoyo para el recorrido de los registros
-        int numeroColumnas, i;
-        
-        try{
-            //establece la conexion con la base de datos especificada
-            cn = Conexion.getConexion();
-            //evitamos el guardado permanente al termino de la transaccion 
-            cn.setAutoCommit(false);
-            //construimos una llamada al procedure
-            cs = cn.prepareCall("{call spSelectAllOrderDetails()}");
-            //ejecutamos el select
-            cs.execute();
-            //conseguimos los resultados
-            rs = cs.getResultSet();        
-            //recorremos los resultados
-            existenMasFilas = rs.next();
-            //ponemos un identificador para el final de la consulta
-            if (!existenMasFilas) {
-                resultSet+="================================";
-            }
-            //conseguimos los metadatos
-            resultadoMetaData = rs.getMetaData();
-            //contamos el numero de columnas de los registros
-            numeroColumnas = resultadoMetaData.getColumnCount();
-
-            //recorremos los registros por columnas
-            while (existenMasFilas) {
-                registro = "";
-                for (i = 1; i <= numeroColumnas; i++) {
-                    registro = registro.concat(rs.getString(i) + ";");
-                }
-                resultSet += registro+"_";
-                existenMasFilas = rs.next();
-            }
-            rs.close();
-            //hace los cambios cometidos, permanentes
-            if(respuesta){
-                cn.commit();
-            }else{
-                //deshacemos los cambios hechos
-                Conexion.deshacerCambios(cn);
-            }
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(SQLException e){
-            //si hay algun error, deshacemos todo cambio hecho en base de datos
-            Conexion.deshacerCambios(cn);
-            //cierre de llamada a procedure
-            Conexion.cerrarCallSt(cs);
-            //cierre de conexion con base de datos
-            Conexion.cerrar(cn);
-        }catch(Exception e){
-            //Impresion de error ajeno a base de datos
-            e.printStackTrace();
-        }
-        return resultSet;
-    }  
-    
+    public static String consult(int id){
+        Session session;
+        session = NewHibernateUtil.getSessionFactory().openSession();
+        Orderdetails orderdetail = (Orderdetails) session.get(Orderdetails.class,id);
+        session.close();
+        System.out.println("Exito al consultar;");
+        return orderdetail.toString()+"_";
+    }        
 
 }
 //mostrar productos por categoria, mostrar uno o mostrar todos, seis metodos en total, actualizar, borrar

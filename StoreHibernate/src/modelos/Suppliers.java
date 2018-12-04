@@ -10,7 +10,6 @@ import java.util.Set;
  */
 public class Suppliers  implements java.io.Serializable {
 
-
      private Integer supplierId;
      private String companyName;
      private String contactName;
@@ -23,12 +22,11 @@ public class Suppliers  implements java.io.Serializable {
      private String phone;
      private String fax;
      private String homePage;
-     private Set productses = new HashSet(0);
 
     public Suppliers() {
     }
 
-    public Suppliers(String companyName, String contactName, String contactTitle, String address, String city, String region, String postalCode, String country, String phone, String fax, String homePage, Set productses) {
+    public Suppliers(String companyName, String contactName, String contactTitle, String address, String city, String region, String postalCode, String country, String phone, String fax, String homePage) {
        this.companyName = companyName;
        this.contactName = contactName;
        this.contactTitle = contactTitle;
@@ -40,7 +38,6 @@ public class Suppliers  implements java.io.Serializable {
        this.phone = phone;
        this.fax = fax;
        this.homePage = homePage;
-       this.productses = productses;
     }
    
     public Integer getSupplierId() {
@@ -127,17 +124,10 @@ public class Suppliers  implements java.io.Serializable {
     public void setHomePage(String homePage) {
         this.homePage = homePage;
     }
-    public Set getProductses() {
-        return this.productses;
-    }
     
-    public void setProductses(Set productses) {
-        this.productses = productses;
+    public String toString(){
+        return this.supplierId+";"+this.companyName+";"+this.contactName+";"+this.contactTitle+";"+this.address+";"+this.city+";"+this.region+";"+this.region+";"+this.postalCode+";"+this.country+";"+this.phone+";"+this.homePage;
     }
-
-
-
-
 }
 
 

@@ -75,6 +75,7 @@ public class EmployeesDAO{
             Conexion.cerrarCallSt(cs);
             //cierre de conexion con base de datos
             Conexion.cerrar(cn);
+            
         }catch(SQLException e){
             //si hay algun error, deshacemos todo cambio hecho en base de datos
             Conexion.deshacerCambios(cn);
@@ -82,6 +83,7 @@ public class EmployeesDAO{
             Conexion.cerrarCallSt(cs);
             //cierre de conexion con base de datos
             Conexion.cerrar(cn);
+            
         }catch(Exception e){
             //Impresion de error ajeno a base de datos
             e.printStackTrace();

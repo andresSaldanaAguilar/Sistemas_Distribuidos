@@ -8,19 +8,19 @@
             <column name="ProductID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="categories" class="modelos.Categories" fetch="select">
+        <property name="categories" type="java.lang.Integer">
             <column name="CategoryID" />
-        </many-to-one>
-        <many-to-one name="suppliers" class="modelos.Suppliers" fetch="select">
+        </property>
+        <property name="suppliers" type="java.lang.Integer">
             <column name="SupplierID" />
-        </many-to-one>
+        </property>
         <property name="productName" type="string">
             <column name="ProductName" length="40" />
         </property>
         <property name="quantityPerUnity" type="string">
             <column name="QuantityPerUnity" length="20" />
         </property>
-        <property name="unitPrice" type="java.lang.Long">
+        <property name="unitPrice" type="java.lang.Double">
             <column name="UnitPrice" precision="10" scale="0" />
         </property>
         <property name="unitInStock" type="java.lang.Integer">
@@ -34,12 +34,6 @@
         </property>
         <property name="discontinued" type="java.lang.Integer">
             <column name="Discontinued" />
-        </property>
-        <set name="orderdetailses" table="orderdetails" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ProductID" />
-            </key>
-            <one-to-many class="modelos.Orderdetails" />
-        </set>
+        </property> 
     </class>
 </hibernate-mapping>

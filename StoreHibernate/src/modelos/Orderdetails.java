@@ -10,16 +10,16 @@ public class Orderdetails  implements java.io.Serializable {
 
 
      private Integer orderDetailsId;
-     private Orders orders;
-     private Products products;
-     private Long unitPrice;
+     private Integer orders;
+     private Integer products;
+     private Double unitPrice;
      private Integer quantity;
      private Double discount;
 
     public Orderdetails() {
     }
 
-    public Orderdetails(Orders orders, Products products, Long unitPrice, Integer quantity, Double discount) {
+    public Orderdetails(Integer orders, Integer products, Double unitPrice, Integer quantity, Double discount) {
        this.orders = orders;
        this.products = products;
        this.unitPrice = unitPrice;
@@ -34,25 +34,25 @@ public class Orderdetails  implements java.io.Serializable {
     public void setOrderDetailsId(Integer orderDetailsId) {
         this.orderDetailsId = orderDetailsId;
     }
-    public Orders getOrders() {
+    public Integer getOrders() {
         return this.orders;
     }
     
-    public void setOrders(Orders orders) {
+    public void setOrders(Integer orders) {
         this.orders = orders;
     }
-    public Products getProducts() {
+    public Integer getProducts() {
         return this.products;
     }
     
-    public void setProducts(Products products) {
+    public void setProducts(Integer products) {
         this.products = products;
     }
-    public Long getUnitPrice() {
+    public Double getUnitPrice() {
         return this.unitPrice;
     }
     
-    public void setUnitPrice(Long unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
     public Integer getQuantity() {
@@ -70,7 +70,9 @@ public class Orderdetails  implements java.io.Serializable {
         this.discount = discount;
     }
 
-
+    public String toString(){
+        return this.orderDetailsId+";"+this.orders+";"+this.products+";"+this.unitPrice+";"+this.quantity+";"+this.quantity+";"+this.discount;
+    }
 
 
 }

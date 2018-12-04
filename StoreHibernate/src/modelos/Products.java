@@ -12,21 +12,20 @@ public class Products  implements java.io.Serializable {
 
 
      private Integer productId;
-     private Categories categories;
-     private Suppliers suppliers;
+     private Integer categories;
+     private Integer suppliers;
      private String productName;
      private String quantityPerUnity;
-     private Long unitPrice;
+     private Double unitPrice;
      private Integer unitInStock;
      private Integer unitsOnOrder;
      private Integer reorderLevel;
      private Integer discontinued;
-     private Set orderdetailses = new HashSet(0);
 
     public Products() {
     }
 
-    public Products(Categories categories, Suppliers suppliers, String productName, String quantityPerUnity, Long unitPrice, Integer unitInStock, Integer unitsOnOrder, Integer reorderLevel, Integer discontinued, Set orderdetailses) {
+    public Products(Integer categories, Integer suppliers, String productName, String quantityPerUnity, Double unitPrice, Integer unitInStock, Integer unitsOnOrder, Integer reorderLevel, Integer discontinued) {
        this.categories = categories;
        this.suppliers = suppliers;
        this.productName = productName;
@@ -36,7 +35,6 @@ public class Products  implements java.io.Serializable {
        this.unitsOnOrder = unitsOnOrder;
        this.reorderLevel = reorderLevel;
        this.discontinued = discontinued;
-       this.orderdetailses = orderdetailses;
     }
    
     public Integer getProductId() {
@@ -46,18 +44,18 @@ public class Products  implements java.io.Serializable {
     public void setProductId(Integer productId) {
         this.productId = productId;
     }
-    public Categories getCategories() {
+    public Integer getCategories() {
         return this.categories;
     }
     
-    public void setCategories(Categories categories) {
+    public void setCategories(Integer categories) {
         this.categories = categories;
     }
-    public Suppliers getSuppliers() {
+    public Integer getSuppliers() {
         return this.suppliers;
     }
     
-    public void setSuppliers(Suppliers suppliers) {
+    public void setSuppliers(Integer suppliers) {
         this.suppliers = suppliers;
     }
     public String getProductName() {
@@ -74,11 +72,11 @@ public class Products  implements java.io.Serializable {
     public void setQuantityPerUnity(String quantityPerUnity) {
         this.quantityPerUnity = quantityPerUnity;
     }
-    public Long getUnitPrice() {
+    public Double getUnitPrice() {
         return this.unitPrice;
     }
     
-    public void setUnitPrice(Long unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
     public Integer getUnitInStock() {
@@ -109,15 +107,6 @@ public class Products  implements java.io.Serializable {
     public void setDiscontinued(Integer discontinued) {
         this.discontinued = discontinued;
     }
-    public Set getOrderdetailses() {
-        return this.orderdetailses;
-    }
-    
-    public void setOrderdetailses(Set orderdetailses) {
-        this.orderdetailses = orderdetailses;
-    }
-
-
 
 
 }

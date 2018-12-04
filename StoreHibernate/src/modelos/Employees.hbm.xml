@@ -62,11 +62,5 @@
         <property name="reportsTo" type="string">
             <column name="ReportsTo" length="40" />
         </property>
-        <set name="orderses" table="orders" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="EmployeeID" />
-            </key>
-            <one-to-many class="modelos.Orders" />
-        </set>
     </class>
 </hibernate-mapping>

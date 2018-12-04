@@ -8,12 +8,12 @@
             <column name="OrderID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="customers" class="modelos.Customers" fetch="select">
+        <property name="customers" type="java.lang.Integer">
             <column name="CustomerID" length="10" />
-        </many-to-one>
-        <many-to-one name="employees" class="modelos.Employees" fetch="select">
+        </property>
+        <property name="employees" type="java.lang.Integer">
             <column name="EmployeeID" />
-        </many-to-one>
+        </property>
         <property name="orderDate" type="string">
             <column name="OrderDate" length="25" />
         </property>
@@ -26,7 +26,7 @@
         <property name="shipVia" type="java.lang.Integer">
             <column name="ShipVia" />
         </property>
-        <property name="freight" type="java.lang.Long">
+        <property name="freight" type="java.lang.Double">
             <column name="Freight" precision="10" scale="0" />
         </property>
         <property name="shipName" type="string">
@@ -47,11 +47,5 @@
         <property name="shipCountry" type="string">
             <column name="ShipCountry" length="15" />
         </property>
-        <set name="orderdetailses" table="orderdetails" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="OrderID" />
-            </key>
-            <one-to-many class="modelos.Orderdetails" />
-        </set>
     </class>
 </hibernate-mapping>

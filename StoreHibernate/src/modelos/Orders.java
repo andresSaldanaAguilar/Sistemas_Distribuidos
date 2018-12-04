@@ -12,25 +12,24 @@ public class Orders  implements java.io.Serializable {
 
 
      private Integer orderId;
-     private Customers customers;
-     private Employees employees;
+     private Integer customers;
+     private Integer employees;
      private String orderDate;
      private String requiredDate;
      private String shippedDate;
      private Integer shipVia;
-     private Long freight;
+     private Double freight;
      private String shipName;
      private String shipAddress;
      private String shipCity;
      private String shipRegion;
      private String shipPostalCode;
      private String shipCountry;
-     private Set orderdetailses = new HashSet(0);
 
     public Orders() {
     }
 
-    public Orders(Customers customers, Employees employees, String orderDate, String requiredDate, String shippedDate, Integer shipVia, Long freight, String shipName, String shipAddress, String shipCity, String shipRegion, String shipPostalCode, String shipCountry, Set orderdetailses) {
+    public Orders(Integer customers, Integer employees, String orderDate, String requiredDate, String shippedDate, Integer shipVia, Double freight, String shipName, String shipAddress, String shipCity, String shipRegion, String shipPostalCode, String shipCountry) {
        this.customers = customers;
        this.employees = employees;
        this.orderDate = orderDate;
@@ -44,7 +43,6 @@ public class Orders  implements java.io.Serializable {
        this.shipRegion = shipRegion;
        this.shipPostalCode = shipPostalCode;
        this.shipCountry = shipCountry;
-       this.orderdetailses = orderdetailses;
     }
    
     public Integer getOrderId() {
@@ -54,18 +52,18 @@ public class Orders  implements java.io.Serializable {
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
-    public Customers getCustomers() {
+    public Integer getCustomers() {
         return this.customers;
     }
     
-    public void setCustomers(Customers customers) {
+    public void setCustomers(Integer customers) {
         this.customers = customers;
     }
-    public Employees getEmployees() {
+    public Integer getEmployees() {
         return this.employees;
     }
     
-    public void setEmployees(Employees employees) {
+    public void setEmployees(Integer employees) {
         this.employees = employees;
     }
     public String getOrderDate() {
@@ -96,11 +94,11 @@ public class Orders  implements java.io.Serializable {
     public void setShipVia(Integer shipVia) {
         this.shipVia = shipVia;
     }
-    public Long getFreight() {
+    public Double getFreight() {
         return this.freight;
     }
     
-    public void setFreight(Long freight) {
+    public void setFreight(Double freight) {
         this.freight = freight;
     }
     public String getShipName() {
@@ -145,15 +143,10 @@ public class Orders  implements java.io.Serializable {
     public void setShipCountry(String shipCountry) {
         this.shipCountry = shipCountry;
     }
-    public Set getOrderdetailses() {
-        return this.orderdetailses;
-    }
-    
-    public void setOrderdetailses(Set orderdetailses) {
-        this.orderdetailses = orderdetailses;
-    }
 
-
+    public String toString(){
+        return this.orderId+";"+this.customers+";"+this.employees+";"+this.orderDate+";"+this.requiredDate+";"+this.shippedDate+";"+this.shipVia+";"+this.freight+";"+this.shipName+";"+this.shipAddress+";"+this.shipCity+";"+this.shipRegion+";"+this.shipPostalCode+";"+this.shipCountry;
+    }
 
 
 }

@@ -41,11 +41,5 @@
         <property name="homePage" type="string">
             <column name="HomePage" length="40" />
         </property>
-        <set name="productses" table="products" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SupplierID" />
-            </key>
-            <one-to-many class="modelos.Products" />
-        </set>
     </class>
 </hibernate-mapping>

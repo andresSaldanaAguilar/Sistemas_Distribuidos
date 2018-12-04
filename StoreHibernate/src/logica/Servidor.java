@@ -129,7 +129,7 @@ public class Servidor{
                         break;     
                     case 13:                                                
                         System.out.println("Server: Insert employees");                    
-                        respuesta = EmployeesDAO.insert(aux[1],aux[2],aux[3],aux[4],aux[5],aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],aux[13],aux[14],aux[15],aux[16],aux[17],Integer.parseInt(aux[18]));
+                        respuesta = EmployeesDAO.insert(aux[1],aux[2],aux[3],aux[4],aux[5],aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],aux[13],aux[14],aux[15],aux[16],aux[17],aux[18]);
                         System.out.println("Success: "+respuesta);
                         ps.println(respuesta);
                         ps.flush();
@@ -143,7 +143,7 @@ public class Servidor{
                         break;
                     case 15:
                         System.out.println("Server: Update employees");
-                        respuesta = EmployeesDAO.update(Integer.parseInt(aux[1]),aux[2],aux[3],aux[4],aux[5],aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],aux[13],aux[14],aux[15],aux[16],aux[17],aux[18],Integer.parseInt(aux[19]));
+                        respuesta = EmployeesDAO.update(Integer.parseInt(aux[1]),aux[2],aux[3],aux[4],aux[5],aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],aux[13],aux[14],aux[15],aux[16],aux[17],aux[18],aux[19]);
                         System.out.println("Success: "+respuesta);
                         ps.println(respuesta);
                         ps.flush();
@@ -157,7 +157,7 @@ public class Servidor{
                         break; 
                     case 17:
                         System.out.println("Server: Insert orders");              
-                        respuesta = OrdersDAO.insert(aux[1],aux[2],aux[3],Integer.parseInt(aux[4]),Double.parseDouble(aux[5]),aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],Integer.parseInt(aux[12]),aux[13]);
+                        respuesta = OrdersDAO.insert(aux[1],aux[2],aux[3],Integer.parseInt(aux[4]),Double.parseDouble(aux[5]),aux[6],aux[7],aux[8],aux[9],aux[10],aux[11],Integer.parseInt(aux[12]),Integer.parseInt(aux[13]));
                         System.out.println("Success: "+respuesta);
                         ps.println(respuesta);
                         ps.flush();
@@ -171,7 +171,7 @@ public class Servidor{
                         break;
                     case 19:
                         System.out.println("Server: Update orders");
-                        respuesta = OrdersDAO.update(Integer.parseInt(aux[1]),aux[2],aux[3],aux[4],Integer.parseInt(aux[5]),Double.parseDouble(aux[6]),aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],Integer.parseInt(aux[13]),aux[14]);
+                        respuesta = OrdersDAO.update(Integer.parseInt(aux[1]),aux[2],aux[3],aux[4],Integer.parseInt(aux[5]),Double.parseDouble(aux[6]),aux[7],aux[8],aux[9],aux[10],aux[11],aux[12],Integer.parseInt(aux[13]),Integer.parseInt(aux[14]));
                         System.out.println("Success: "+respuesta);
                         ps.println(respuesta);
                         ps.flush();
